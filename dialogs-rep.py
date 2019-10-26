@@ -51,34 +51,20 @@ def closeFile():
     currentFile = ""
     textEntry.delete("1.0", "end")
 
-myConfig = [
-    {
-        "buttonName" : "Open file",
-        "function" : selectFile
-    },
-    {
-        "buttonName" : "Save file",
-        "function" : saveFile
-    },
-    {
-        "buttonName" : "Select folder",
-        "function" : selectFolder
-    },
-    {
-        "buttonName" : "Close file",
-        "function" : closeFile
-    }
-]
-
 window = Tk()
-frame1 = Frame(window)
-for btnConfig in myConfig:
-    btn = Button(frame1, text = btnConfig["buttonName"]\
-        , command = btnConfig["function"])
-    btn.pack(side = LEFT)
+
+menubar = Menu(window)
+fileMenu = Menu(menubar)
+menubar.add_cascade(label = "File", menu=fileMenu)
+
+fileMenu.add_command(label = "Open file", command = selectFile)
+fileMenu.add_command(label = "Save file", command = saveFile)
+fileMenu.add_command(label = "Select folder", command = selectFolder)
+fileMenu.add_command(label = "Close file", command = closeFile)
+
+window["menu"] = menubar
 
 textEntry = Text(window, height = 10, width = 80)
-frame1.grid(row = 0, column = 0)
-textEntry.grid(row = 1, column = 0)
+textEntry.grid(row = 0, column = 0, sticky = "nwes")
 
 window.mainloop()
