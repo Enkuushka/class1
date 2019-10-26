@@ -71,7 +71,12 @@ def closeFile():
 def addTab():
     global notebook, window
     frame = Frame(window)
+    textEntry = Text(frame, height = 10, width = 80)
+    textEntry.pack()
     notebook.add(frame, text='New tab')
+    tabsss = notebook.tabs()
+    lastTabId = tabsss[-1]
+    notebook.select(lastTabId)
 
 window = Tk()
 
