@@ -11,12 +11,7 @@ myFileTypes = [
 
 
 
-# openFiles = [
-#     {
-#         filePath: "",
-#         tabId: ""
-#     }
-# ]
+openFileTabs = []
 
 
 
@@ -29,16 +24,16 @@ def selectFile():
     # messagebox.showinfo("Selected file name",filepath)
     if(filepath != ""):
         fileHandler = codecs.open(filepath, "r", encoding="utf-8")
-        content = ""
+        contents = ""
         lines = fileHandler.readlines()
         currentFile = filepath
         currentFileName = filepath
         window.title(currentFileName)
         print("SET Current file: " + currentFile)
         for line in lines:
-            content = content + line
-        textEntry.insert("2.end", content)
+            contents = contents + line
         fileHandler.close()
+        openFileTabs.append(addTab(currentFileName, contents))
 
 def saveFile():
     global currentFile
@@ -68,15 +63,27 @@ def closeFile():
     window.title("Tk")
     textEntry.delete("1.0", "end")
 
-def addTab():
+def addTab(name, contents):
     global notebook, window
     frame = Frame(window)
     textEntry = Text(frame, height = 10, width = 80)
+    textEntry.insert("1.0", contents)
     textEntry.pack()
-    notebook.add(frame, text='New tab')
+    notebook.add(frame, text=name)
     tabsss = notebook.tabs()
     lastTabId = tabsss[-1]
     notebook.select(lastTabId)
+    return {
+        "filepath" : name
+        "tabid" : lastTabId,
+        "textEntry" : textEntry
+    }
+
+def getSelectedTab():
+    global notebook
+    print(notebook.select())
+    # for tabid in notebook.tabs():
+    #     print(notebook.tab(tabid))
 
 window = Tk()
 
@@ -89,26 +96,15 @@ fileMenu.add_command(label = "Save file", command = saveFile)
 fileMenu.add_command(label = "Select folder", command = selectFolder)
 fileMenu.add_command(label = "Close file", command = closeFile)
 
-fileMenu.add_command(label = "Test add tab", command = addTab)
+fileMenu.add_command(label = "Test", command = getSelectedTab)
 
 window["menu"] = menubar
 
 # textEntry.grid(row = 0, column = 0, sticky = "nwes")
 
 notebook = ttk.Notebook(window)
-f1 = Frame(notebook)
-f2 = Frame(notebook)
-notebook.add(f1, text='Tab 1')
-notebook.add(f2, text='Tab 2')
-
-textEntry = Text(f1, height = 10, width = 80)
-textEntry.pack()
 
 notebook.pack()
 
-print(notebook.tabs())
-
-notebook.tab(".!notebook.!frame2", state="disabled")
-print(notebook.tab(".!notebook.!frame2"))
 
 window.mainloop()
