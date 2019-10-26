@@ -31,24 +31,19 @@ def selectFile():
         window.title(currentFileName)
         print("SET Current file: " + currentFile)
         for line in lines:
-            contents = contents + line
+            contents = contents + str(line)
         fileHandler.close()
         openFileTabs.append(addTab(currentFileName, contents))
 
 def saveFile():
     global notebook, currentFile
-    tabid = notebook.select()
-    selectedInfo = ""
-    for info in openFileTabs:
-        if(info["tabid"] == tabid):
-            selectedInfo = info
-            break
+    [tabid, selectedData] = getSelectedData()
 
-    if(selectedInfo != ""):
+    if(selectedData != ""):
         print("Current file: " + currentFile)
-        currentFile = selectedInfo["filepath"]
-        textEntry = selectedInfo["textEntry"]
-        content = textEntry.get("1.0", "end")
+        currentFile = selectedData["filepath"]
+        textEntry = selectedData["textEntry"]
+        content = textEntry.get("1.0", "end -1 char")
         if(currentFile != ""):
             fileHandler = codecs.open(currentFile, "w", encoding="utf-8")
             fileHandler.writelines(content)
@@ -61,6 +56,7 @@ def saveFile():
                 fileHandler = codecs.open(filepath, "w", encoding="utf-8")
                 fileHandler.writelines(content)
                 fileHandler.close()
+        selectedData["lastContent"] = content
     else:
         messagebox.showerror("Error", "Програмын openFileTabs дотор Таб олдсонгүй!")
 
@@ -69,11 +65,50 @@ def selectFolder():
     messagebox.showinfo("Selected folder name", filepath)
 
 def closeFile():
-    global currentFile
+    global currentFile, notebook
     currentFile = ""
     currentFileName = ""
     window.title("Tk")
-    textEntry.delete("1.0", "end")
+
+    [selectedTabId, selectedData] = getSelectedData()
+
+    textEntry = selectedData["textEntry"]
+    content = textEntry.get("1.0", "end -1 char")
+    tmp = {"tempContent" : content}
+
+    ## Файл нээсэн үед lastContent нь өөр форматаар уншигддаг алдаатай.
+    isSaved = False
+    isForceClose = False
+
+    if(selectedData["lastContent"] == tmp["tempContent"]):
+        isSaved = True
+    else:
+        value = messagebox.askyesno(
+	    message='Та файлаа хадгалаагүй байна. Хадгалах уу?',
+	    title='Анхаар')
+        if(value == True):
+            saveFile()
+            isSaved = True
+        else:
+            isForceClose = True
+    
+    if(isSaved or isForceClose):
+        notebook.hide(selectedTabId)
+        openFileTabs.remove(selectedData)
+
+def getSelectedData():
+    global notebook
+    tabid = notebook.select()
+    selectedInfo = ""
+    for info in openFileTabs:
+        if(info["tabid"] == tabid):
+            selectedInfo = info
+            break
+
+    return [
+        tabid,
+        selectedInfo
+    ]
 
 def addTab(name, contents):
     global notebook, window
@@ -88,7 +123,8 @@ def addTab(name, contents):
     return {
         "filepath" : name,
         "tabid" : lastTabId,
-        "textEntry" : textEntry
+        "textEntry" : textEntry,
+        "lastContent": contents
     }
 
 def getSelectedTab():
