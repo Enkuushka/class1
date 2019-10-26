@@ -1,0 +1,13 @@
+JSON module
+
+json.loads(STR) -> OBJ
+
+json.dumps(OBJ) -> STR
+
+
+DATATYPE - өгөгдлийн төрөл
+ VARIABLE - хувьсагч
+ VALUE - утга
+
+function call - функц дуудах
+ return value -  функцын буцаах утга

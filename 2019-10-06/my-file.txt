@@ -1,0 +1,1 @@
+Long text 10.000000 is value.

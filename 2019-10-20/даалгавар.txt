@@ -1,0 +1,16 @@
+Жишээг туршиж үзэх
+
+text.insert("3.end", "my text") гэх маягаар 
+доорх индексүүдийг туршиж үзээрэй.
+
+3.end	The newline at the end of line 3.
+1.0 + 3 chars	Three characters past the start of line 1.
+2.end -1 chars	The last character before the new line in line 2.
+end -1 chars	The newline that Tk always adds at the end of the text.
+end -2 chars	The actual last character of the text.
+end -1 lines	The start of the last actual line of text.
+2.2 + 2 lines	The third character (index 2) of the fourth line of text.
+2.5 linestart	The first character of line 2.
+2.5 lineend	The position of the newline at the end of line 2.
+2.5 wordstart	First char. of the word with the char. at index 2.5.
+2.5 wordend	First char. after the word with the char. at index 2.5.
