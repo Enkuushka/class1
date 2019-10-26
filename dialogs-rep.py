@@ -36,21 +36,33 @@ def selectFile():
         openFileTabs.append(addTab(currentFileName, contents))
 
 def saveFile():
-    global currentFile
-    print("Current file: " + currentFile)
-    content = textEntry.get("1.0", "end")
-    if(currentFile != ""):
-        fileHandler = codecs.open(currentFile, "w", encoding="utf-8")
-        fileHandler.writelines(content)
-        fileHandler.close()
-        messagebox.showinfo("Saved!", "Saved!")
-    else:
-        filepath = filedialog.asksaveasfilename(filetypes=myFileTypes)
-        if(filepath != ""):
-            filepath = filepath + ".txt"
-            fileHandler = codecs.open(filepath, "w", encoding="utf-8")
+    global notebook, currentFile
+    tabid = notebook.select()
+    selectedInfo = ""
+    for info in openFileTabs:
+        if(info["tabid"] == tabid):
+            selectedInfo = info
+            break
+
+    if(selectedInfo != ""):
+        print("Current file: " + currentFile)
+        currentFile = selectedInfo["filepath"]
+        textEntry = selectedInfo["textEntry"]
+        content = textEntry.get("1.0", "end")
+        if(currentFile != ""):
+            fileHandler = codecs.open(currentFile, "w", encoding="utf-8")
             fileHandler.writelines(content)
             fileHandler.close()
+            messagebox.showinfo("Saved!", "Saved!")
+        else:
+            filepath = filedialog.asksaveasfilename(filetypes=myFileTypes)
+            if(filepath != ""):
+                filepath = filepath + ".txt"
+                fileHandler = codecs.open(filepath, "w", encoding="utf-8")
+                fileHandler.writelines(content)
+                fileHandler.close()
+    else:
+        messagebox.showerror("Error", "Програмын openFileTabs дотор Таб олдсонгүй!")
 
 def selectFolder():
     filepath = filedialog.askdirectory()
@@ -74,7 +86,7 @@ def addTab(name, contents):
     lastTabId = tabsss[-1]
     notebook.select(lastTabId)
     return {
-        "filepath" : name
+        "filepath" : name,
         "tabid" : lastTabId,
         "textEntry" : textEntry
     }
@@ -99,8 +111,6 @@ fileMenu.add_command(label = "Close file", command = closeFile)
 fileMenu.add_command(label = "Test", command = getSelectedTab)
 
 window["menu"] = menubar
-
-# textEntry.grid(row = 0, column = 0, sticky = "nwes")
 
 notebook = ttk.Notebook(window)
 
