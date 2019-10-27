@@ -59,5 +59,6 @@ for elem in data:
     canvas.create_text(100 + counter*x_step, 360, text=str(elem["year"]))
     counter=counter+1
 
+# Даалгавар: Дээрх цэгээр илэрхийлсэн утгуудыг шулуунаар холбож үзүүл.
 
 window.mainloop()
