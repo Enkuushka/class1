@@ -32,11 +32,32 @@ for line in lineList:
     })
 fileHandler.close()
 
-print(data)
 
 # 2. Draw graph
 #
+totalData = len(data)
+w = 500
+h = 300
+canvas.create_line(100, 50, 100, 350)
+canvas.create_line(100, 350, 600, 350)
+x_step = int(w/totalData)
 
+for x in range(100, 600, x_step):
+    canvas.create_line(x, 350, x, 360)
+
+max = 0
+for elem in data:
+    if(max < elem["pop"]):
+        max = elem["pop"]
+
+y_step = max/h
+print("y_step = " + str(y_step))
+counter = 0
+for elem in data:
+    y_value = (350 - elem["pop"] / y_step) + 150
+    canvas.create_oval(100 + counter*x_step, y_value, 100 + counter*x_step + 5, y_value + 5)
+    canvas.create_text(100 + counter*x_step, 360, text=str(elem["year"]))
+    counter=counter+1
 
 
 window.mainloop()
