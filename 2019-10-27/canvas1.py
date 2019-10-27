@@ -1,15 +1,46 @@
 from tkinter import *
 from tkinter import ttk
 
+window = Tk()
+
+v1 = StringVar()
+v2 = StringVar()
+v3 = StringVar()
+v4 = StringVar()
+topLevel = ""
+
+def drawLine():
+    global canvas, window, v1, v2, v3, v4, topLevel
+    canvas.create_line(int(v1.get()), int(v2.get()), int(v3.get()), int(v4.get()))
+    v1.set("")
+    v2.set("")
+    v3.set("")
+    v4.set("")
+    topLevel.destroy()
+
 def addLine():
-    global window
+    global window, topLevel
     topLevel = Toplevel(window)
     label1 = Label(topLevel, text="X1")
     label2 = Label(topLevel, text="Y1")
     label3 = Label(topLevel, text="X2")
     label4 = Label(topLevel, text="Y2")
+    label1.grid(column=0, row=0)
+    label2.grid(column=0, row=1)
+    label3.grid(column=0, row=2)
+    label4.grid(column=0, row=3)
 
-window = Tk()
+    entry1 = Entry(topLevel, textvariable=v1)
+    entry2 = Entry(topLevel, textvariable=v2)
+    entry3 = Entry(topLevel, textvariable=v3)
+    entry4 = Entry(topLevel, textvariable=v4)
+    entry1.grid(column=1, row=0)
+    entry2.grid(column=1, row=1)
+    entry3.grid(column=1, row=2)
+    entry4.grid(column=1, row=3)
+
+    okbtn = Button(topLevel, text="OK", command=drawLine)
+    okbtn.grid(column=0, row=4, columnspan=2, sticky="WE")
 
 h = ttk.Scrollbar(window, orient=HORIZONTAL)
 v = ttk.Scrollbar(window, orient=VERTICAL)
