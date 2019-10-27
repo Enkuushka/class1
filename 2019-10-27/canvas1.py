@@ -43,8 +43,9 @@ for y in range(0, 500, 100):
     canvas.create_line(0, y, 10, y)
     canvas.create_text(20, y, text=str(y))
 
+theImage = PhotoImage(file='D:/class1/2019-10-27/google_logo.png')
 
-
+canvas.create_image(272, 92, image=theImage)
 
 
 window.mainloop()
