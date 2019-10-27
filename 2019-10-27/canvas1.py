@@ -33,15 +33,13 @@ canvas.create_polygon(100, 100, 200, 340, 340, 230, 140, 250)
 
 # 500 x 500
 canvas.create_line(0, 10, 500, 10)
-canvas.create_line(10, 0, 10, 800)
+canvas.create_line(10, 0, 10, 500)
 
-# EHLEL
 for x in range(0, 500, 10):
-    canvas.create_line(x, 0, x, 0)
+    canvas.create_line(x, 0, x, 10)
 
 for y in range(0, 500, 10):
-    canvas.create_line(x, 0, x, 0)
-# DUUSAH
+    canvas.create_line(0, y, 10, y)
 
 
 window.mainloop()
