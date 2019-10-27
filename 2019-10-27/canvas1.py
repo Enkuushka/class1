@@ -1,19 +1,31 @@
 from tkinter import *
 from tkinter import ttk
 
+def addLine():
+    global window
+    topLevel = Toplevel(window)
+    label1 = Label(topLevel, text="X1")
+    label2 = Label(topLevel, text="Y1")
+    label3 = Label(topLevel, text="X2")
+    label4 = Label(topLevel, text="Y2")
+
 window = Tk()
 
 h = ttk.Scrollbar(window, orient=HORIZONTAL)
 v = ttk.Scrollbar(window, orient=VERTICAL)
 
+lineButton = Button(window, text="Line...", command=addLine)
+
 canvas = Canvas(window, scrollregion=(0, 0, 1000, 1000), yscrollcommand=v.set, xscrollcommand=h.set)
 h['command'] = canvas.xview
 v['command'] = canvas.yview
-ttk.Sizegrip(window).grid(column=1, row=1, sticky=(S,E))
 
-canvas.grid(column=0, row=0, sticky=(N,W,E,S))
-h.grid(column=0, row=1, sticky=(W,E))
-v.grid(column=1, row=0, sticky=(N,S))
+
+lineButton.grid(column=0, row=0)
+ttk.Sizegrip(window).grid(column=1, row=2, sticky=(S,E))
+canvas.grid(column=0, row=1, sticky=(N,W,E,S))
+h.grid(column=0, row=2, sticky=(W,E))
+v.grid(column=1, row=1, sticky=(N,S))
 window.grid_columnconfigure(0, weight=1)
 window.grid_rowconfigure(0, weight=1)
 
