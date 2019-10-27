@@ -21,8 +21,22 @@ window.grid_rowconfigure(1, weight=1)
 
 #
 # 1. Read data from data.txt
+fileHandler = open("D:/class1/2019-10-27/data.txt", "r")
+lineList = fileHandler.readlines()
+data = []
+for line in lineList:
+    d = line.split("\n")[0].split(" ")
+    data.append({
+        "year" : int(d[0]),
+        "pop" : int(d[1])
+    })
+fileHandler.close()
+
+print(data)
+
 # 2. Draw graph
 #
+
 
 
 window.mainloop()
