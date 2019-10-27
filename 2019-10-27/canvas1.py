@@ -35,11 +35,16 @@ canvas.create_polygon(100, 100, 200, 340, 340, 230, 140, 250)
 canvas.create_line(0, 10, 500, 10)
 canvas.create_line(10, 0, 10, 500)
 
-for x in range(0, 500, 10):
+for x in range(0, 500, 100):
     canvas.create_line(x, 0, x, 10)
+    canvas.create_text(x, 20, text=str(x))
 
-for y in range(0, 500, 10):
+for y in range(0, 500, 100):
     canvas.create_line(0, y, 10, y)
+    canvas.create_text(20, y, text=str(y))
+
+
+
 
 
 window.mainloop()
