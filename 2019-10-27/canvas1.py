@@ -64,8 +64,10 @@ def addCircle():
         c_y = int(v2.get())
         r = int(v3.get())
         # c_x, c_y, r-ийг ашиглаж х1,x2,y1,y2-ийг тооцоол
-        # ...
-        # ...
+        x1 = c_x - r
+        x2 = c_x + r
+        y1 = c_y - r
+        y2 = c_y + r
         canvas.create_oval(x1, y1, x2, y2)
         v1.set("")
         v2.set("")
