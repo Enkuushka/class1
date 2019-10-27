@@ -9,15 +9,6 @@ v3 = StringVar()
 v4 = StringVar()
 topLevel = ""
 
-def drawLine():
-    global canvas, window, v1, v2, v3, v4, topLevel
-    canvas.create_line(int(v1.get()), int(v2.get()), int(v3.get()), int(v4.get()))
-    v1.set("")
-    v2.set("")
-    v3.set("")
-    v4.set("")
-    topLevel.destroy()
-
 def addLine():
     global window, topLevel
     topLevel = Toplevel(window)
@@ -39,26 +30,72 @@ def addLine():
     entry3.grid(column=1, row=2)
     entry4.grid(column=1, row=3)
 
+    def drawLine():
+        # global canvas, window, v1, v2, v3, v4, topLevel
+        canvas.create_line(int(v1.get()), int(v2.get()), int(v3.get()), int(v4.get()))
+        v1.set("")
+        v2.set("")
+        v3.set("")
+        v4.set("")
+        topLevel.destroy()
+
     okbtn = Button(topLevel, text="OK", command=drawLine)
+    okbtn.grid(column=0, row=4, columnspan=2, sticky="WE")
+
+def addCircle():
+    global window, topLevel
+    topLevel = Toplevel(window)
+    label1 = Label(topLevel, text="X1")
+    label2 = Label(topLevel, text="Y1")
+    label3 = Label(topLevel, text="R")
+    label1.grid(column=0, row=0)
+    label2.grid(column=0, row=1)
+    label3.grid(column=0, row=2)
+
+    entry1 = Entry(topLevel, textvariable=v1)
+    entry2 = Entry(topLevel, textvariable=v2)
+    entry3 = Entry(topLevel, textvariable=v3)
+    entry1.grid(column=1, row=0)
+    entry2.grid(column=1, row=1)
+    entry3.grid(column=1, row=2)
+
+    def drawCircle():
+        c_x = int(v1.get())
+        c_y = int(v2.get())
+        r = int(v3.get())
+        # c_x, c_y, r-ийг ашиглаж х1,x2,y1,y2-ийг тооцоол
+        # ...
+        # ...
+        canvas.create_oval(x1, y1, x2, y2)
+        v1.set("")
+        v2.set("")
+        v3.set("")
+        topLevel.destroy()
+
+    okbtn = Button(topLevel, text="OK", command=drawCircle)
     okbtn.grid(column=0, row=4, columnspan=2, sticky="WE")
 
 h = ttk.Scrollbar(window, orient=HORIZONTAL)
 v = ttk.Scrollbar(window, orient=VERTICAL)
 
-lineButton = Button(window, text="Line...", command=addLine)
+frame = Frame(window)
+lineButton = Button(frame, text="Line...", command=addLine)
+circleButton = Button(frame, text="Circle...", command=addCircle)
 
 canvas = Canvas(window, scrollregion=(0, 0, 1000, 1000), yscrollcommand=v.set, xscrollcommand=h.set)
 h['command'] = canvas.xview
 v['command'] = canvas.yview
 
 
-lineButton.grid(column=0, row=0)
+lineButton.pack(side=LEFT)
+circleButton.pack(side=LEFT)
+frame.grid(column=0, row=0)
 ttk.Sizegrip(window).grid(column=1, row=2, sticky=(S,E))
 canvas.grid(column=0, row=1, sticky=(N,W,E,S))
 h.grid(column=0, row=2, sticky=(W,E))
 v.grid(column=1, row=1, sticky=(N,S))
 window.grid_columnconfigure(0, weight=1)
-window.grid_rowconfigure(0, weight=1)
+window.grid_rowconfigure(1, weight=1)
 
 # Шулуун зурах     x1  y1  x2   y2
 shape_Id1 = canvas.create_line(10, 10, 150, 300)
