@@ -20,3 +20,7 @@ SELECT ORD_DATE, SUM(ORD_AMOUNT) FROM Orders
 GROUP BY ORD_DATE
 ORDER BY SUM(ORD_AMOUNT) ASC
 LIMIT 3;
+
+
+select * from Orders
+limit 10 offset 10;
