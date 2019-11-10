@@ -1,0 +1,46 @@
+JOIN query
+
+
+дор хаяж 2 table хэрэгтэй.
+
+
+
+
+- Захиалга
+- Ажилтан
+
+Ажилтан
+ - ID
+ - Нэр
+ - Ажилд орсон он
+ - Утас
+ - Хаяг
+
+CREATE TABLE worker (
+    id integer not null primary key,
+    name varchar(64) not null,
+    start_year int,
+    phone varchar(20),
+    address mediumtext
+);
+
+
+INSERT INTO `worker`(`id`, `name`, `start_year`, `phone`, `address`) VALUES 
+(1, "Bat", 2000, "8865", "UB1"),
+(2, "Dorj", 2000, "8866", "UB2"),
+(3, "Bayar", 2002, "8822", "UB3"),
+(4, "Bold", 2002, "8877", "UB4"),
+(5, "Bileg", 2009, "8899", "UB6");
+
+
+Захиалга бүртгэх хүснэгтэнд багана нэмэх
+
+ALTER TABLE orders
+ADD COLUMN (worker_id integer default 1)
+
+
+
+SELECT worker_id, COUNT(ORD_NUM) FROM `orders` GROUP BY worker_id
+
+2 хүснэгтийг нийлүүлж хайх:
+SELECT worker.name, worker_id, COUNT(ORD_NUM) FROM `orders` JOIN worker ON worker.id = worker_id GROUP BY worker_id
