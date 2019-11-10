@@ -9,34 +9,29 @@ dictionary["hello"] = "сайн уу"
 
 status = "running"
 
+mysqlConn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    database="class_db",
+    passwd=""
+)
+
+mysqlCursor = mysqlConn.cursor()
+
 def addWord(eng, mon):
     #DATABASE-ruu bichih bolgono
-
-    # dictFile = codecs.open("dictionary.txt", "a", "utf-8")
-    # dictFile.write(u'%s--%s\r\n'% (eng, mon))
-    # dictFile.close()
-    # dictionary[eng] = mon
-    # print(dictionary)
+    query = ("INSERT INTO dictionary VALUES (\"%s\", \"%s\")")%(eng, mon)
+    mysqlCursor.execute(query)
     
 
 def translate(eng):
     #DATABASE-aas unshij, haih bolgono
-
-
-    # dictFile = codecs.open("dictionary.txt", "r", "utf-8")
-    # found = False
-    # translation = "Орчуулга олдсонгүй!"
-    # while ~found:
-    #     line = dictFile.readline()
-    #     if(line != ""):
-    #         engMon = line.split("--") # list[0] eng, list[1] mon
-    #         if(engMon[0] == eng):
-    #             found = True
-    #             translation = engMon[1]
-    #     else:
-    #         break
-    # dictFile.close()
-    # return translation
+    query = ("SELECT mon_word FROM dictionary WHERE eng_word LIKE \"%s\"")%(eng)
+    mysqlCursor.execute(query)
+    data = mysqlCursor.fetchall()
+    if(len(data) == 0):
+        return "Үг олдсонгүй."
+    return data[0][0]
 
 while(status == "running"):
     print("A - үг нэмэх")
