@@ -44,3 +44,19 @@ SELECT worker_id, COUNT(ORD_NUM) FROM `orders` GROUP BY worker_id
 
 2 хүснэгтийг нийлүүлж хайх:
 SELECT worker.name, worker_id, COUNT(ORD_NUM) FROM `orders` JOIN worker ON worker.id = worker_id GROUP BY worker_id
+
+
+
+
+Дасгал:
+
+1. UB3 хаягт амьдардаг ажилчин хэдэн онд ажилд орсон бэ?
+
+2. 2002 онд ажилд орсон ажилчид хэдэн захиалга авсан бэ?
+
+3. Bold хэдэн захиалга авсан бэ?
+
+4. 2008-11-03-нд 1 дугаартай ажилтан хэдэн захиалга авав?
+
+5. 2008-11-03-нд нийт ажилтан тус бүр хэдэн захиалга авав?
+
