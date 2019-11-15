@@ -82,3 +82,6 @@ CREATE TABLE comments (
 
 ALTER TABLE content
 ADD COLUMN (category_id integer not null default 1)
+
+ALTER TABLE comments
+ADD COLUMN (content_id integer not null default 1)

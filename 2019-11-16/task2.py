@@ -47,7 +47,30 @@ if(songolt_1 == "u"):
     print("--------------")
     print(news[0][2])
 
-    pass
+    print("[L]ike    [C]omment")
+    action = input(": ")
+    
+    if(action == "L"):
+        old_like_count = news[0][6]
+        query = '''UPDATE content
+        SET like_count = %d
+        WHERE id = %d'''%(old_like_count+1, content_id)
+        executeSql(query)
+        print("Liked!")
+
+    elif(action == "C"):
+        guest_name = input("Таны нэр: ")
+        comment = input("Сэтгэгдэл: ")
+
+        max_id = executeSql("SELECT IFNULL(0, MAX(id)) FROM comments")
+        newid = max_id[0][0]+1
+        query = '''INSERT INTO comments (id, name, body, content_id)
+            VALUES
+            (%d, "%s", "%s", %d)
+            '''%(newid, guest_name, comment, content_id)
+        executeSql(query)
+        print("Commented!")
+
 
 elif(songolt_1 == "b"):
     print("Бичих хэрэглэгчээ сонго:")
@@ -68,7 +91,9 @@ elif(songolt_1 == "b"):
     body = input("Мэдээ: ")
 
     max_id = executeSql("SELECT MAX(id) FROM content")
-    if(max_id == None):
+    # доорх query-г мөн ашиглаж болно.
+    # SELECT IFNULL(0, MAX(id)) FROM content
+    if(max_id[0][0] == None):
         new_id = 1
     else:
         new_id = max_id[0][0] + 1
