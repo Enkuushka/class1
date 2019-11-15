@@ -67,6 +67,11 @@ CREATE TABLE comments (
         [1] [Bat]
         ...
     --- hereglegch id oruulna.
+    -- ангилал songoh!
+     [category_id] [category name]
+        [1] [Bat]
+        ...
+    --- hereglegch id oruulna.
     - garchig oruulna
     - aguulga bichne
     - Хадгална
