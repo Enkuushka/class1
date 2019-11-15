@@ -31,6 +31,15 @@ elif(songolt_1 == "b"):
     
     w_id = input("Хэрэглэгчийн ID: ")
     
+    print("Мэдээний ангилал сонго:")
+    cats = executeSql("SELECT id, name FROM category")
+    for row in cats:
+        print("[%d] %s"%(row[0], row[1]))
+    
+    c_id = input("Хэрэглэгчийн ID: ")
+    
+    title = input("Мэдээний гарчиг: ")
+    body = input("Мэдээ: ")
 
     pass
 else:

@@ -5,6 +5,7 @@
     * title     string
     * body      string
     * worker_id intenger
+    * category_id intenger
     * created_date datetime
     * viewed_count /үзсэн тоо/   integer
     * like_count                integer
@@ -77,3 +78,7 @@ CREATE TABLE comments (
     - Хадгална
         * үүсгэсэн огноо
         * бичсэн хэрэглэгчийн ID-г цуг хадгалах
+
+
+ALTER TABLE content
+ADD COLUMN (category_id integer not null default 1)
