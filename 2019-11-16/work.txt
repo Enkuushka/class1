@@ -1,0 +1,19 @@
+Мэдээний вэб:
+
+- Агуулга /content/
+    * id        integer,
+    * title     string
+    * body      string
+    * worker_id intenger
+    * created_date datetime
+    * viewed_count /үзсэн тоо/   integer
+    * like_count                integer
+- Ангилал /category/
+    * id    integer
+    * name   string
+- Сэтгэгдэл /comment/
+    * id      integer
+    * name    string
+    * body    string
+    * like_count    integer
+    * dislike_count   integer
