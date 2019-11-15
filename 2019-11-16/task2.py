@@ -1,4 +1,5 @@
 import mysql.connector
+import datetime
 
 mysqlConn = mysql.connector.connect(
     host="localhost",
@@ -12,9 +13,11 @@ def executeSql(query):
 
     mysqlCursor.execute(query)
 
-    data = mysqlCursor.fetchall()
-
-    return data
+    if(mysqlCursor.with_rows):
+        data = mysqlCursor.fetchall()
+        return data
+    
+    return "OK"
 
 
 songolt_1 = input("Унших[u], Бичих[b]: ")
@@ -29,17 +32,28 @@ elif(songolt_1 == "b"):
     for w in workers:
         print("[%d] %s"%(w[0], w[1]))
     
-    w_id = input("Хэрэглэгчийн ID: ")
+    w_id = int(input("Хэрэглэгчийн ID: "))
     
     print("Мэдээний ангилал сонго:")
     cats = executeSql("SELECT id, name FROM category")
     for row in cats:
         print("[%d] %s"%(row[0], row[1]))
     
-    c_id = input("Хэрэглэгчийн ID: ")
+    c_id = int(input("Хэрэглэгчийн ID: "))
     
     title = input("Мэдээний гарчиг: ")
     body = input("Мэдээ: ")
+
+    max_id = executeSql("SELECT MAX(id) FROM content")
+    new_id = max_id[0][0] + 1
+
+    insertQuery = '''
+        INSERT INTO content (id, title, body, worker_id, category_id, created_date) 
+        VALUES
+        (%d, "%s", "%s", %d, %d, "%s")
+    '''%(new_id, title, body, w_id, c_id, datetime.date.today())
+    
+    value = executeSql(insertQuery)
 
     pass
 else:
