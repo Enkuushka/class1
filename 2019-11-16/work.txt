@@ -17,3 +17,58 @@
     * body    string
     * like_count    integer
     * dislike_count   integer
+
+
+
+CREATE TABLE category (
+    id integer not null primary key,
+    name varchar(128) not null default "no category name"
+);
+
+INSERT INTO category VALUES
+(1, "Ангилал нэг"),
+(2, "Ангилал хоёр"),
+(3, "Сандал"),
+(4, "Ширээ");
+
+
+CREATE TABLE content (
+    id integer not null primary key,
+    title varchar(256),
+    body text,
+    worker_id integer not null,
+    created_date datetime,
+    viewed_count integer default 0,
+    like_count integer default 0
+)
+
+CREATE TABLE comments (
+    id integer not null primary key,
+    name varchar(256),
+    body text,
+    like_count integer default 0,
+    dislike_count integer default 0
+)
+
+Агуулга бичдэг, уншдаг програм хийх!
+ - Унших [u]/Бичих [b]
+ - songolt oruulna
+ herev "u":
+    -- suuliin 5 medeenii garchgiig haruulna
+     [id] [title]
+     [1] [Medee neg]
+    ---- hereglegch medeenii id oruulna.
+        *** Medeenii uzsen toog 1-eer nemne.
+     ---- medeeg haruulna
+
+ herev "b":
+    -- hereglegch songoh!
+     [worker_id] [worker name]
+        [1] [Bat]
+        ...
+    --- hereglegch id oruulna.
+    - garchig oruulna
+    - aguulga bichne
+    - Хадгална
+        * үүсгэсэн огноо
+        * бичсэн хэрэглэгчийн ID-г цуг хадгалах
