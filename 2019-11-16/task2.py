@@ -2,7 +2,7 @@ import mysql.connector
 import datetime
 
 mysqlConn = mysql.connector.connect(
-    host="localhost",
+    host="localhost", # 192.168.1.155
     user="root",
     database="class_db",
     passwd=""
@@ -25,7 +25,7 @@ songolt_1 = input("Унших[u], Бичих[b]: ")
 if(songolt_1 == "u"): 
 
     query = '''SELECT id, title FROM content
-    ORDER BY created_date DESC
+    ORDER BY id DESC, created_date DESC
     LIMIT 5'''
 
     data = executeSql(query)
@@ -58,11 +58,12 @@ if(songolt_1 == "u"):
         executeSql(query)
         print("Liked!")
 
-    elif(action == "C"):
+    elif(action == "C" or action == "c"):
         guest_name = input("Таны нэр: ")
         comment = input("Сэтгэгдэл: ")
 
-        max_id = executeSql("SELECT IFNULL(0, MAX(id)) FROM comments")
+        max_id = executeSql("SELECT MAX(IFNULL(id, 0)) FROM comments")
+        print(max_id)
         newid = max_id[0][0]+1
         query = '''INSERT INTO comments (id, name, body, content_id)
             VALUES
@@ -102,7 +103,7 @@ elif(songolt_1 == "b"):
         INSERT INTO content (id, title, body, worker_id, category_id, created_date) 
         VALUES
         (%d, "%s", "%s", %d, %d, "%s")
-    '''%(new_id, title, body, w_id, c_id, datetime.date.today())
+    '''%(new_id, title, body, w_id, c_id, datetime.datetime.now())
     
     value = executeSql(insertQuery)
 
