@@ -82,3 +82,16 @@ for t in teams:
 for i in range(30):
     data = getGame()
     insertGame(data)
+
+
+
+# 1. Эхний тоглолт хэзээ болсон бэ?
+#    SELECT MIN(game_date) FROM `games`
+
+# 2. Нийт хамгийн олон оноо авсан багийн нэр?
+#    SELECT * FROM (SELECT team_id, SUM(pts) as allpts FROM (SELECT team1_id as team_id, SUM(team1_pts) as pts FROM `games` GROUP BY team1_id UNION SELECT team2_id as team_id, SUM(team2_pts) as pts FROM `games` GROUP BY team2_id) as tmp GROUP BY team_id ORDER BY allpts DESC LIMIT 1) as tmp1 JOIN teams ON teams.id = tmp1.team_id
+
+# 3. Хамгийн их хожсон багийн нэр?
+# 4. Хамгийн их хожигдсон багийн нэр?
+#
+#
