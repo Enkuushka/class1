@@ -55,3 +55,6 @@ CREATE TABLE relative (
 Aaaaa бол Bbbbb-ийн huuhed.
 Bbbbb бол Aaaaa-ийн aav.
 гэж хэвлэх python code бичих.
+
+
+pip install mysql-connector-python
