@@ -38,7 +38,7 @@ def insertGame(data):
     insertQuery = '''
         INSERT INTO `games`(`team1_id`, `team2_id`, `team1_pts`, `team2_pts`, `game_date`) 
         VALUES 
-        (%d,%d,%d,%d,%d,"%s")
+        (%d,%d,%d,%d,"%s")
     '''%(data[0],data[1],data[2],data[3],data[4])
     
     value = executeSql(insertQuery)
