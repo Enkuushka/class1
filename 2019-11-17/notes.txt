@@ -49,3 +49,9 @@ CREATE TABLE relative (
     customer_id_2 integer,
     type varchar(32)
 );
+
+
+
+Aaaaa бол Bbbbb-ийн huuhed.
+Bbbbb бол Aaaaa-ийн aav.
+гэж хэвлэх python code бичих.
