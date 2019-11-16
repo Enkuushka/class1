@@ -6,6 +6,12 @@
  - утасны дугаар /олон/
  - боловсрол /олон/
 
+
+Хамаатан /relative/
+ - 1 хэрэглэгч
+ - 2 хэрэглэгч
+ - хамаарал /аав, ээж..../
+
 утасны дугаар
  - гэр/гар/ажил - ын утас
  - дугаар
@@ -14,3 +20,32 @@
  - элссэн он
  - төгссөн он
  - сургууль
+
+
+ CREATE TABLE customer (
+    id integer NOT NULL PRIMARY KEY,
+    name varchar(64),
+    birth date
+);
+
+CREATE TABLE phone (
+    id integer NOT NULL PRIMARY KEY,
+    type varchar(64), -- ger/gar/ajil
+    number integer,
+    customer_id integer
+);
+
+CREATE TABLE edu (
+    id integer NOT NULL PRIMARY KEY,
+    begin integer,
+    end integer,
+    name mediumtext,
+    customer_id integer
+);
+
+CREATE TABLE relative (
+    id integer NOT NULL PRIMARY KEY,
+    customer_id_1 integer,
+    customer_id_2 integer,
+    type varchar(32)
+);
