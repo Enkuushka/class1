@@ -1,0 +1,6 @@
+1. HTML
+2. CSS
+3. JS
+
+<html>, <head>, <body> ... - HTML Tag
+<a href="", <img src="" .... - HTML Tag-ийн Attribute
