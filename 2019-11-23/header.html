@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Heading</title>
+        <style>
+            body {
+                font-family:Arial;
+                margin: 0;
+            }
+            .part1 {
+                padding-top: 20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .part1 a {  
+                color: #aaa;
+                text-decoration: none;
+                font-size: 40px;
+                font-family:Arial;
+                font-weight: bold;
+            }
+            .part1 a:hover {
+                color: green;
+            }
+            .part1 div {
+                width: 50%;
+                float: right;
+                text-align: right;
+                height: 40px;
+                position: relative;
+            }
+            .part1 div span {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+            .nogoon {
+                color: green;
+            }
+
+            .part2 {
+                background-color: #888;
+                overflow: auto;
+            }
+            .part2 a {
+                color: white;
+                background-color: #888;
+                text-decoration: none;
+                padding: 15px;
+                float: left;
+            }
+            .part2 a:hover {
+                background-color: black;
+            }
+            .part2 a.baruun {
+                float: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="part1">
+            <a href="">
+                w3schools<span class="nogoon">.com</span>
+            </a>
+            <div>
+                <span>THE WORLD'S LARGEST WEB DEVELOPER SITE</span>
+            </div>
+        </div>
+
+        <div class="part2">
+            <a href="#">HOME</a>
+            <a href="#">HTML</a>
+            <a href="#">CSS</a>
+            <a href="#">JAVASCRIPT</a>
+            <a href="#">SQL</a>
+            <a href="#">MORE</a>
+
+            <a class="baruun" href="#">[ ]</a>
+            <a class="baruun" href="#">( )</a>
+            <a class="baruun" href="#">{ }</a>
+            <a class="baruun" href="#">EXERCISES</a>
+            <a class="baruun" href="#">REFERENCES</a>
+        </div>
+
+    </body>
+</html>
