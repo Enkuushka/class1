@@ -1,0 +1,26 @@
+Templating: Загвар хуудас
+
+1. polls/templates/polls/ хавтас үүсгэнэ.
+2. polls/templates/polls/index.html файлыг үүсгэнэ.
+
+"templating language" 
+{{ ... }}   {% ... %}
+
+
+Model - functions:
+ӨС-тай ажиллах зарим функцууд
+
+3. polls/views.py файл дотор бичнэ.
+
+from .models import Question
+latest_question_list = Question.objects.order_by('-pub_date')[:5]
+....
+
+4. polls/views.py
+ӨС-аас авсан мэдээллийг загвар хуудастай хольж HTML үүсгэнэ
+
+template = loader.get_template('polls/index.html')
+context = {
+    'latest_question_list': latest_question_list,
+}
+return HttpResponse(template.render(context, request))
