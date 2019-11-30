@@ -26,4 +26,17 @@ Models:
     admin.site.register(Question)
 
 
+Супер хэрэглэгч үүсгэх
+1. python manage.py createsuperuser
 
+
+Даалгавар:
+1. NEWS - апп үүсгэ
+    manage.py startapp news
+
+2. medee - модел үүсгэ
+    - title, гарчиг - 100 тэмдэгт
+    - zurag, зураг - 
+    - body - гол мэдээний хэсэг
+    - liketoo, лайк-тоо
+    - pub_date, бичсэн огноо
