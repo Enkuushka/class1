@@ -1,0 +1,29 @@
+Django steps:
+
+1. django-admin startproject mysite
+2. cd mysite
+3. python manage.py runserver
+4. CTRL+C ... stops
+5. python manage.py startapp polls
+
+
+Models:
+- Question [id, question_text, pub_date]
+- Choice   [qid, id]
+            qid <---- Foreign key
+
+1. polls/models.py - дотор модел/хүснэгт-ийг тодорхойлж өгнө
+2. python manage.py makemigrations polls
+3. python manage.py sqlmigrate polls 0001 - ЗААВАЛ БИШ
+4. python manage.py migrate - ӨС-руу жинхэнэ өөрчлөлтийг оруулна
+5. Админы цонхноос модел нэмэх/удирдах
+    ## polls/admin.py
+    from django.contrib import admin
+
+    from .models import Question
+
+    # Register your models here.
+    admin.site.register(Question)
+
+
+
