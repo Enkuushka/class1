@@ -24,3 +24,16 @@ context = {
     'latest_question_list': latest_question_list,
 }
 return HttpResponse(template.render(context, request))
+
+
+
+
+
+
+
+
+
+Цаанаасаа ирдэг элемэнтүүд
+built-in tags
+
+https://docs.djangoproject.com/en/2.2/ref/templates/builtins/#built-in-filter-reference
