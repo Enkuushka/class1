@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>HTML forms</title>
+        <link href="bootstrap-4.4.1-dist/css/bootstrap.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Forms example</h1>
+            <form method="GET" action="web-link.html">
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" name="tanii_ner">
+
+                <br>
+
+                <input type="checkbox" name="human" id="isHuman">
+                <label for="isHuman">Are you human?</label>
+
+                <br>
+                <input type="checkbox" name="human" id="isRobot">
+                <label for="isRobot">Are you robot?</label>
+
+                <br>
+                <hr>
+                <input type="radio" name="gender" id="isMale">
+                <label for="isMale">Are you boy?</label>
+                <br>
+                <input type="radio" name="gender" id="isFemale">
+                <label for="isFemale">Are you girl?</label>
+
+                <hr>
+
+                <label for="countrySelect">Country</label>
+                <select id="countrySelect">
+                    <option>MGL</option>
+                    <option>CHN</option>
+                    <option>RUS</option>
+                    <option>USA</option>
+                </select>
+
+                <hr>
+                <label for="foods">Foods</label>
+                <select multiple id="foods">
+                    <option>food 1</option>
+                    <option>food 2</option>
+                    <option>food 3</option>
+                    <option>food 4</option>
+                </select>
+
+                <hr>
+                <input type="submit" class="btn btn-primary">
+            </form>
+        </div>
+    </body>
+</html>
