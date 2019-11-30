@@ -12,10 +12,11 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12">
                 <h1>Энэ оны санал асуулгууд</h1>
             </div>
+            
             <div class="col-6">
                 
                 {% if latest_question_list %}
@@ -38,7 +39,46 @@
                     </div>
                 </div>
             </div>
+        </div> -->
+
+        <div class="row mt-4">
+            <div class="col-4">
+                <div class="list-group" id="list-tab" role="tablist">
+                    {% for question in latest_question_list %}
+                        <a id="list-home-list{{ question.id }}" class="list-group-item list-group-item-action" href="#list-home{{ question.id }}"  data-toggle="list" role="tab" aria-controls="home">{{ question.question_text }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="tab-content" id="nav-tabContent">
+                    {% for question in latest_question_list %}
+                        <div class="tab-pane fade show" id="list-home{{ question.id }}" role="tabpanel" aria-labelledby="list-home-list{{ question.id }}">
+
+                            <h4>Сонголтууд:</h4>
+
+                            <form action="{% url 'polls:vote' question.id %}" 
+                            method="post">
+                                {% csrf_token %}
+
+                                {% for choice in question.choice_set.all %}
+                                    <label>
+                                        <input type="radio" value="{{ choice.id }}" name="choice"> 
+                                        {{ choice.choice_text }}
+                                    </label>
+                                    <br>
+                                {% endfor %}
+                                <br>
+                                <input type="submit" value="Санал өгөх">
+                            </form>
+
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="{% static 'polls/bootstrap-4.4.1-dist/js/bootstrap.js' %}"></script>
 </body>
 </html>
