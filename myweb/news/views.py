@@ -11,3 +11,9 @@ def index(request):
 def read(request, news_id):
     news = Medee.objects.get(pk=news_id)
     return render(request, "news/read.html", {"news": news})
+
+def like(request, news_id):
+    news = Medee.objects.get(pk=news_id)
+    news.liketoo = news.liketoo + 1
+    news.save(update_fields = ['liketoo'] )
+    return HttpResponse(news.liketoo)

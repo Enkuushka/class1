@@ -1,5 +1,31 @@
+{% load static %}
+
+<script src="{% static 'news/js/jquery-3.4.1.min.js' %}"></script>
+
 <h1>{{ news.title }}</h1>
 
 <img width="300px" src="{{ news.zurag.url }}" alt="" srcset="">
 
 <p>{{ news.body }}</p>
+
+<p>
+    <h2><span id="liketoo_str">{{ news.liketoo }}</span> <button id="like_btn">LIKE</button></h2>
+</p>
+
+<p>{{ news.pub_date }}</p>
+
+<script>
+    var likebtn = $("#like_btn");
+    likebtn.on("click", function(e) {
+        $.ajax({
+            "url": "http://localhost:8000/like/{{ news.id }}",
+            "method": "GET",
+            "success": function(data) {
+                $("#liketoo_str").text(data);
+            },
+            "error": function(data) {
+                alert("aldaa!");
+            },
+        });
+    });
+</script>
