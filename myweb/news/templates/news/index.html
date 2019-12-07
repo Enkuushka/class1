@@ -1,0 +1,5 @@
+<ul>
+    {% for single_news in data %}
+    <li><a href="http://localhost:8000/read/{{single_news.id}}">{{ single_news.title }}</a></li>
+    {% endfor %}
+</ul>

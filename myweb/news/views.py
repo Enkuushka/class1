@@ -6,4 +6,8 @@ from .models import Medee
 def index(request):
     latest_five_news = Medee.objects.order_by('-pub_date')[:5]
     output = ', '.join([n.title for n in latest_five_news])
-    return HttpResponse(output)
+    return render(request, "news/index.html", {"data": latest_five_news})
+
+def read(request, news_id):
+    news = Medee.objects.get(pk=news_id)
+    return render(request, "news/read.html", {"news": news})
