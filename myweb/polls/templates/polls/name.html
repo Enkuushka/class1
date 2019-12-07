@@ -1,0 +1,27 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td colspan="2">
+                {{ form.errors }}
+            </td>
+        </tr>
+        <tr>
+            <td>{{ form.your_name.label_tag }}</td>
+            <td>{{ form.your_name }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.songolt.label_tab }}</td>
+            <td>{{ form.songolt }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.ognoo.label_tab }}</td>
+            <td>{{ form.ognoo }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>SUBMIT</td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit">
+</form>
