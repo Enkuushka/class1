@@ -20,5 +20,8 @@ Task:
 Шинэ прожект үүсгэх
 Github.com - account uusgeed PUSH
 Write TODO app.
+
+** Бүрэн AJAX ашиглах. Эхний хуудас дуудахаас бусад үйлдэл дээр Хуудас Шинэчлэгдэхгүй.
+
 Хэрэглэгч бүрийн өөрсдийн үүсгэсэн хийх ажлын жагсаалтыг харуулдаг байна.
 Sample image --->   https://miro.medium.com/max/645/1*ldjKIHMsIXUACy7mj1aYwQ.png
