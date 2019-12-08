@@ -1,0 +1,23 @@
+git init
+
+
+git status
+
+
+git log -n 3 
+
+
+git add . 
+git add filename1 filename2
+
+git commit -m "..........."
+
+
+git remote add origin "http://....."
+
+git push
+
+git pull
+
+
+git clone ......
