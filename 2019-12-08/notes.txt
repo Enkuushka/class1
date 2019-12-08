@@ -25,3 +25,15 @@ Write TODO app.
 
 Хэрэглэгч бүрийн өөрсдийн үүсгэсэн хийх ажлын жагсаалтыг харуулдаг байна.
 Sample image --->   https://miro.medium.com/max/645/1*ldjKIHMsIXUACy7mj1aYwQ.png
+
+
+
+
+
+
+next:
+- todo app ...
+- pdf
+- i18
+- authorization
+- server deployment, domain name
