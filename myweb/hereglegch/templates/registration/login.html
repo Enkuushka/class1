@@ -10,6 +10,9 @@
             {{ form }}
 
             <input type="hidden" name="next" value="{{ next }}">
+
+            <a href="{% url 'password_reset' %}">Нууц үгээ мартсан уу?</a>
+
             <input type="submit" value="Login">
         </form>
     </body>

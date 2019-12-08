@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 
 from .models import Medee
 
@@ -8,10 +10,11 @@ def index(request):
     output = ', '.join([n.title for n in latest_five_news])
     return render(request, "news/index.html", {"data": latest_five_news})
 
+@login_required
 def read(request, news_id):
     news = Medee.objects.get(pk=news_id)
     return render(request, "news/read.html", {"news": news})
-
+    
 def like(request, news_id):
     news = Medee.objects.get(pk=news_id)
     news.liketoo = news.liketoo + 1

@@ -24,7 +24,8 @@ urlpatterns = [
     path('', include('news.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('hereglegch/', include('hereglegch.urls'))
+    path('hereglegch/', include('hereglegch.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG: 
