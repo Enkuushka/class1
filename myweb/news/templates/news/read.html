@@ -1,48 +1,100 @@
 {% load static %}
 
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/bootstrap-4.4.1-dist/css/bootstrap.css' %}">
+    </head>
 
-{% if user.is_authenticated %}
-<p>
-    Хэрэглэгч: {{ user.username }}
-    <form action="{% url 'logout' %}">
-        {% csrf_token %}
-        <input type="submit" value="Гарах">
-    </form>
-</p>
+    <body>
 
-{% else %}
-<p>
-    <a href="{% url 'login' %}">Нэвтэрч орно уу.</a>
-</p>
-{% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'index' %}">Home page</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+
+                    <h1>{{ news.title }}</h1>
+
+                    <div class="row">
+                        <div class="col-auto mr-auto">
+                            <h3 class="text-secondary">{{ news.pub_date }}</h3>
+                        </div>
+                        <div class="col-auto">
+                            <h5><span id="liketoo_str">{{ news.liketoo }}</span> <button id="like_btn" class="btn btn-outline-info">LIKE</button></h5>
+                        </div>
+                    </div>
 
 
-<script src="{% static 'news/js/jquery-3.4.1.min.js' %}"></script>
 
-<h1>{{ news.title }}</h1>
+                    <img width="300px" src="{{ news.zurag.url }}" alt="" srcset="">
 
-<img width="300px" src="{{ news.zurag.url }}" alt="" srcset="">
+                    <p style="line-height: 2em;">{{ news.body }}</p>
 
-<p>{{ news.body }}</p>
+                </div>
+                <div class="col-4">
+                    {% if user.is_authenticated %}
+                    <p>
+                        Хэрэглэгч: {{ user.username }}
+                        <form action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <input type="submit" value="Гарах">
+                        </form>
+                    </p>
+            
+                    {% else %}
+                    <p>
+                        <a href="{% url 'login' %}">Нэвтэрч орно уу.</a>
+                    </p>
+                    {% endif %}
 
-<p>
-    <h2><span id="liketoo_str">{{ news.liketoo }}</span> <button id="like_btn">LIKE</button></h2>
-</p>
 
-<p>{{ news.pub_date }}</p>
+                    <p>
+                        <a class="btn btn-default" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <img src="{% static 'news/label.png' %}" alt="" srcset="" width="20px"> Link with href
+                        </a>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <ul>
+                                <li>Aaaa</li>
+                                <li>Aaaa1 </li>
+                                <li>Aaaa2</li>
+                                <li>Aaaa3</li>
+                                <li>Aaaa 4</li>
+                            </ul>
+                        </div>
+                    </div>
 
-<script>
-    var likebtn = $("#like_btn");
-    likebtn.on("click", function(e) {
-        $.ajax({
-            "url": "http://localhost:8000/like/{{ news.id }}",
-            "method": "GET",
-            "success": function(data) {
-                $("#liketoo_str").text(data);
-            },
-            "error": function(data) {
-                alert("aldaa!");
-            },
-        });
-    });
-</script>
+
+
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+
+        <script src="{% static 'news/js/jquery-3.4.1.min.js' %}"></script>
+        <script src="{% static 'polls/bootstrap-4.4.1-dist/js/bootstrap.js' %}"></script>
+        <script>
+            var likebtn = $("#like_btn");
+            likebtn.on("click", function(e) {
+                $.ajax({
+                    "url": "http://localhost:8000/like/{{ news.id }}",
+                    "method": "GET",
+                    "success": function(data) {
+                        $("#liketoo_str").text(data);
+                    },
+                    "error": function(data) {
+                        alert("aldaa!");
+                    },
+                });
+            });
+        </script>
+    </body>
+</html>
+
