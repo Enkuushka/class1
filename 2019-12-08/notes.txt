@@ -12,3 +12,13 @@ https://docs.djangoproject.com/en/3.0/topics/auth/default
         - news_id
         - like_darsan_ognoo
 
+
+
+
+
+Task:
+Шинэ прожект үүсгэх
+Github.com - account uusgeed PUSH
+Write TODO app.
+Хэрэглэгч бүрийн өөрсдийн үүсгэсэн хийх ажлын жагсаалтыг харуулдаг байна.
+Sample image --->   https://miro.medium.com/max/645/1*ldjKIHMsIXUACy7mj1aYwQ.png
