@@ -1,0 +1,11 @@
+<h1>Сайтад бүртгүүлэх</h1>
+
+<form action="{% url 'burtgel' %}" method="POST">
+
+    {% csrf_token %}
+
+    {{ form }}
+
+    <br>
+    <input type="submit" value="Бүртгүүлэх">
+</form>
