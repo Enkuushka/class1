@@ -1,5 +1,24 @@
-<ul>
-    {% for single_news in data %}
-    <li><a href="http://localhost:8000/read/{{single_news.id}}">{{ single_news.title }}</a></li>
-    {% endfor %}
-</ul>
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/bootstrap-4.4.1-dist/css/bootstrap.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul>
+                        {% for single_news in data %}
+                        <li><a href="http://localhost:8000/read/{{single_news.id}}">{{ single_news.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="{% static 'polls/bootstrap-4.4.1-dist/js/bootstrap.js' %}"></script>
+    </body>
+</html>
+

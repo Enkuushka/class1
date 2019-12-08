@@ -4,3 +4,11 @@ https://docs.djangoproject.com/en/3.0/topics/auth/default
 
     shinee
     X6DmLwSIy
+
+
+- Нэг хүн нэг удаа лайк дарах
+    Table:
+        - user_id
+        - news_id
+        - like_darsan_ognoo
+
