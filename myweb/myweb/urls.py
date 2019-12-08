@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('news.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('hereglegch/', include('hereglegch.urls'))
 ]
 
 if settings.DEBUG: 

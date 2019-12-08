@@ -1,5 +1,22 @@
 {% load static %}
 
+
+{% if user.is_authenticated %}
+<p>
+    Хэрэглэгч: {{ user.username }}
+    <form action="{% url 'logout' %}">
+        {% csrf_token %}
+        <input type="submit" value="Гарах">
+    </form>
+</p>
+
+{% else %}
+<p>
+    <a href="{% url 'login' %}">Нэвтэрч орно уу.</a>
+</p>
+{% endif %}
+
+
 <script src="{% static 'news/js/jquery-3.4.1.min.js' %}"></script>
 
 <h1>{{ news.title }}</h1>

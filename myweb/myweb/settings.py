@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'hereglegch.apps.HereglegchConfig',
     'news.apps.NewsConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
@@ -123,3 +124,5 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+
+LOGIN_REDIRECT_URL = '/'
