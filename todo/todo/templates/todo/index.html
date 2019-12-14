@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,7 @@
 </head>
 <body>
     {% csrf_token %}
-    <h1>todos</h1>
+    <h1>{% trans "todos" %}</h1>
     <input type="text" name="" id="input-field">
     <div id="rows">
             
@@ -63,16 +64,16 @@
         <input type="checkbox" name="" id="">
         <span>AAAA</span>
     </div> -->
-    <div>3 items</div>
+    <div>{% trans "3 items" %}</div>
     <footer>
         <p>
-            Double-click to edit a todo
+                {% trans "Double-click to edit a todo" %}
         </p>
         <p>
-            Written by class#1
+                {% trans "Written by class#1" %}
         </p>
         <p>
-            Part of python course
+                {% trans "Part of python course" %}
         </p>
     </footer>
 

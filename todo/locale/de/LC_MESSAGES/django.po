@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-14 20:35+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\todo\templates\todo\index.html:58
+msgid "todos"
+msgstr ""
+
+#: .\todo\templates\todo\index.html:67
+msgid "3 items"
+msgstr ""
+
+#: .\todo\templates\todo\index.html:70
+msgid "Double-click to edit a todo"
+msgstr ""
+
+#: .\todo\templates\todo\index.html:73
+msgid "Written by class#1"
+msgstr ""
+
+#: .\todo\templates\todo\index.html:76
+msgid "Part of python course"
+msgstr ""
+
+#: .\todo\views.py:29
+msgid "Result ok!"
+msgstr ""
